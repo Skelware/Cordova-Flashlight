@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android" id="com.skelware.plugins.flashlight"
+	version="1.0.0">
+	<name>Flashlight</name>
+	<description>
+		A lightweight flashlight plugin for Cordova.
+	</description>
+	<license>MIT</license>
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>
+
+	<js-module src="www/Flashlight.js" name="Flashlight">
+		<clobbers target="window.plugins.flashlight" />
+	</js-module>
+
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="Flashlight">
+				<param name="android-package" value="com.skelware.plugins.Flashlight" />
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="android.permission.CAMERA" />
+		</config-file>
+
+		<source-file src="src/android/com/skelware/plugins/Flashlight.java"
+			target-dir="src/com/skelware/plugins" />
+	</platform>
+</plugin>
