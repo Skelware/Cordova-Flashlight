@@ -35,6 +35,7 @@ window.plugins.flashlight.isSupported(callback(boolean)); //requests camera acce
 
 * 2: Enable or disable the torch using one of the following functions:
 ```javascript
+window.plugins.flashlight.toggle(callbac);
 window.plugins.flashlight.enable(callback);
 window.plugins.flashlight.disable(callback);
 window.plugins.flashlight.setEnabled(boolean, callback);
@@ -43,6 +44,14 @@ window.plugins.flashlight.setEnabled(boolean, callback);
 * 3: Release the camera when the app closes, or when you don't need it anymore:
 ```javascript
 window.plugins.flashlight.release(callback);
+```
+
+Because the native code is stateless, it executes whatever you want it to execute without checking whether it's even possible. This means that the torch may not actually turn on when you want it to turn on, because the camera is still being requested or released!
+
+To manually check the state of the camera, use the following functions:
+```javascript
+window.plugins.flashlight.isEnabled();
+window.plugins.flashlight.isReady();
 ```
 
 ##Live Example: Fancy Flashlight
