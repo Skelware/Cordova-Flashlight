@@ -42,11 +42,13 @@ cordova.addConstructor(function Flashlight() {
 		}, 'Flashlight', 'request', []);
 	};
 
-	this.release = function(callack) {
+	this.release = function(callback) {
 		cordova.exec(function() {
 			_ready = false;
 			callback.apply(window.plugins.flashlight, arguments);
-		}, callback, 'Flashlight', 'release', []);
+		}, function() {
+			callback.apply(window.plugins.flashlight, arguments);
+		}, 'Flashlight', 'release', []);
 	};
 
 	this.enable = this.setEnabled.bind(this, true);
